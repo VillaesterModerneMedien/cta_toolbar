@@ -1,0 +1,55 @@
+{
+  "name": "CTA_Toolbar",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VillaesterModerneMedien/VillaesterDB"
+  },
+  "author": {
+    "name": "Villaester Moderne Medien GmbH",
+    "email": "info@villa-ester.de",
+    "url": "https://villa-ester.de"
+  },
+  "scripts": {
+    "watch": "cross-env NODE_ENV=development gulp watch",
+    "build": "cross-env NODE_ENV=production gulp build",
+    "copy": "cross-env NODE_ENV=production gulp copyFiles",
+    "init": "sh ./scripts/joomla.sh"
+  },
+  "license": "GNU",
+
+  "homepage": "https://villa-ester.de",
+  "replacejson": {
+    "[UPDATEURL]": "http://villa-ester.de",
+    "[AUTHOR]": "Villaester Moderne Medien GmbH",
+    "[AUTHOR_EMAIL]": "info@villa-ester.de",
+    "[COPYRIGHT]": "Copyright © 2022 Villaester Moderne Medien GmbH. All rights reserved.",
+    "[AUTHOR_URL]": "https://villa-ester.de/",
+    "[DATE]": "11.09.2022"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/register": "^7.7.4",
+    "@babel/runtime": "^7.7.7",
+    "browser-sync": "^2.26.7",
+    "cross-env": "^6.0.3",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.3",
+    "gulp-if": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "node-notifier": "^6.0.0",
+    "through2": "^3.0.1"
+  },
+  "buildconfigs": {
+    "proxy": "http://ctatoolbar.test"
+  },
+  "dependencies": {
+    "uikit": "^3.5.7",
+    "vinyl-named": "^1.1.0",
+    "webpack": "^5.74.0",
+    "webpack-stream": "^7.0.0"
+  }
+}
