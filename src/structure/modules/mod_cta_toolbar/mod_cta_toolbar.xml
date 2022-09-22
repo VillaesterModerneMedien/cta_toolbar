@@ -37,83 +37,98 @@
                     <field
                             name="sublogos"
                             type="subform"
-                            label="CTA Icons"
+                            label=""
                             description="CTA Icons"
                             multiple="true"
                             min="1"
                             max="10"
                     >
                         <form>
-                            <field
-                                    name="url"
-                                    type="text"
-                                    label="URL"
-                                    description=""
-                            />
-                            <field
-                                    name="target"
-                                    default="_self"
-                                    type="list"
-                                    label="Target"
-                                    description=""
-                            >
-                                <option value="_self">Gleicher Tab</option>
-                                <option value="_blank">Neuer Tab</option>
-                                <option value="_parent">Elternfenster</option>
-                                <option value="_top">Ganzes Fenster</option>
-                            </field>
-                            <field
-                                    name="icon"
-                                    type="Icon"
-                                    label="Icon"
-                                    description=""
-                                    default=""
-                            />
+                          <field
+                            name="label"
+                            type="text"
+                            label="Beschriftung"
+                            description=""
+                          />
+                          <field
+                            name="icon"
+                            type="Icon"
+                            label="Icon"
+                            description=""
+                            default=""
+                          />
+                          <field
+                            name="iconClass"
+                            type="text"
+                            label="Klasse"
+                            description=""
+                          />
+                          <field
+                            name="url"
+                            type="text"
+                            label="URL"
+                            description=""
+                          />
+                          <field
+                            name="target"
+                            default="_self"
+                            type="radio"
+                            label="Ziel"
+                            description=""
+                          >
+                            <option value="_self">Gleicher Tab</option>
+                            <option value="_blank">Neuer Tab</option>
+                            <option value="_parent">Elternfenster</option>
+                            <option value="_top">Ganzes Fenster</option>
+                          </field>
                         </form>
                     </field>
                 </fieldset>
                 <fieldset name="Einstellungen" label="Einstellungen">
+                  <fieldset name="toolbarsetting" label="Toolbar">
                     <field
-                            name="position"
-                            default="top"
-                            type="list"
-                            label="Toolbar-Ausrichtung"
-                            description=""
+                      name="position"
+                      default="top"
+                      type="list"
+                      label="Toolbar-Ausrichtung"
+                      description=""
                     >
-                        <option value="top">oben</option>
-                        <option value="bottom">unten</option>
+                      <option value="top">oben</option>
+                      <option value="bottom">unten</option>
                     </field>
                     <field
-                            name="sticky"
-                            default="nonsticky"
-                            type="list"
-                            label="Sticky-Toolbar?"
-                            description=""
+                      name="sticky"
+                      default="nonsticky"
+                      type="list"
+                      label="Sticky-Toolbar?"
+                      description=""
                     >
                         <option value="sticky">Ja</option>
                         <option value="nonsticky">Nein</option>
                     </field>
                     <field
-                            name="height"
-                            type="text"
-                            default="fit-content"
-                            label="Toolbar-Höhe"
-                            description=""
+                      name="height"
+                      type="text"
+                      default="fit-content"
+                      label="Toolbar-Höhe"
+                      description=""
                     />
                     <field
-                            name="width"
-                            type="text"
-                            default="100vw"
-                            label="Toolbar-Breite"
-                            description=""
+                      name="width"
+                      type="text"
+                      default="100vw"
+                      label="Toolbar-Breite"
+                      description=""
                     />
                     <field
-                            name="backgroundcolor"
-                            type="color"
-                            default="#eee"
-                            format="rgba"
-                            label="Hintergrund-Farbe"
-                            description="" />
+                      name="backgroundcolor"
+                      type="color"
+                      default="#eee"
+                      format="rgba"
+                      label="Hintergrund-Farbe"
+                      description="" />
+                  </fieldset>
+                  <fieldset name="iconsetting" label="Icons">
                     <field
                             name="iconcolor"
                             type="color"
@@ -141,6 +156,7 @@
                             label="Icon-Größe"
                             description=""
                     />
+                  </fieldset>
                 </fieldset>
                 <fieldset name="advanced">
                     <field

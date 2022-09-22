@@ -49,26 +49,25 @@ else
 }
 
 ?>
-    <div class="ctaContainer">
-        <i class="<?= $iconklasse; ?>"></i>
-        <button
-                type="button"
-                class="btn btn-sm btn-info w5rem mb-1 ctaModalButton"
-                data-bs-id="<?php echo $id; ?>"
-                data-bs-toggle="modal"
-                data-bs-target="#cta-modal-box"
+<div class="ctaContainer">
+    <i class="<?= $iconklasse; ?>"></i>
+    <button
+            type="button"
+            class="btn btn-sm btn-info w5rem mb-1 ctaModalButton"
+            data-bs-id="<?php echo $id; ?>"
+            data-bs-toggle="modal"
+            data-bs-target="#cta-modal-box"
+    >
+        Icon ändern 
+        <input
+                type="hidden"
+                name="<?php echo $name; ?>"
+                id="<?php echo $id; ?>"
+                value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
+            <?php echo implode(' ', $attributes); ?>
         >
-            Icon auswählen
-            <input
-                    type="hidden"
-                    name="<?php echo $name; ?>"
-                    id="<?php echo $id; ?>"
-                    value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
-                <?php echo implode(' ', $attributes); ?>
-            >
-        </button>
-
-    </div>
+    </button>
+</div>
 
 
 
