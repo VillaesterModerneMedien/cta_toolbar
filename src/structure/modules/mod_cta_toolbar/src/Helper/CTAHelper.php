@@ -18,28 +18,47 @@ namespace Joomla\Module\CTAToolbar\Site\Helper;
  */
 class CTAHelper
 {
-    public static function getContent($params)
+	/**
+	 * @param $params
+	 *
+	 * @return array
+	 *
+	 * @since version
+	 */
+	public static function getContent($params)
     {
-        $logos = $params->get('sublogos', '');
-        $size = $params->get('size','');
-        $sticky = $params->get('sticky','');
-        $position = $params->get('position','');
-        $spacing = $params->get('spacing','');
-        $width = $params->get('width','');
-        $height = $params->get('height','');
-        $backgroundcolor = $params->get('backgroundcolor','');
-        $iconcolor = $params->get('iconcolor','');
+        $items                          = $params->get('subitems', '');
+	    $toolbarPosition                = $params->get('toolbarPosition','');
+	    $boxAlign                       = $params->get('boxAlign','');
+	    $hideable                       = $params->get('hideable','');
+        $enableMobile                   = $params->get('enableMobile','');
+        $breakpoint                     = $params->get('breakpoint','');
+        $toolbarPositionMobile          = $params->get('toolbarPositionMobile','');
+        $iconSize                       = $params->get('iconSize','');
+	    $fontSize                       = $params->get('fontSize','');
+	    $animationStyle                 = $params->get('animationStyle','');
+	    $groupBackgroundColor           = $params->get('groupBackgroundColor','');
+	    $globalTextColor                = $params->get('globalTextColor','');
+	    $globalTextHoverColor           = $params->get('globalTextHoverColor','');
+	    $globalTextBackgroundColor      = $params->get('globalTextBackgroundColor','');
+	    $globalTextHoverBackgroundColor = $params->get('GlobalTextBackgroundColor','');
 
         $content = [
-            'logos'             =>  $logos,
-            'size'              =>  $size,
-            'position'          =>  $position,
-            'width'             =>  $width,
-            'height'            =>  $height,
-            'backgroundcolor'   => $backgroundcolor,
-            'iconcolor'         =>  $iconcolor,
-            'sticky'            =>  $sticky,
-            'spacing'           =>  $spacing
+			'items'                          =>  $items,
+            'toolbarPosition'                =>  $toolbarPosition,
+            'boxAlign'                       =>  $boxAlign,
+            'hideable'                       =>  $hideable,
+            'enableMobile'                   =>  $enableMobile,
+            'breakpoint'                     =>  $breakpoint,
+            'toolbarPositionMobile'          =>  $toolbarPositionMobile,
+            'iconSize'                       =>  $iconSize,
+            'fontSize'                       =>  $fontSize,
+	        'animationStyle'                 =>  $animationStyle,
+			'groupBackgroundColor'           =>  $groupBackgroundColor,
+			'globalTextColor'                =>  $globalTextColor,
+			'globalTextHoverColor'           =>  $globalTextHoverColor,
+			'globalTextBackgroundColor'      =>  $globalTextBackgroundColor,
+			'globalTextHoverBackgroundColor' =>  $globalTextHoverBackgroundColor,
         ];
         return $content;
     }

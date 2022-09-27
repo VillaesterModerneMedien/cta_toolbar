@@ -2,13 +2,13 @@
     <extension type="module" client="site" method="upgrade">
         <name>CTA Toolbar</name>
         <author>Mario Hewera</author>
-        <creationDate>Mai 2022</creationDate>
+        <creationDate>September 2022</creationDate>
         <copyright>(C) 2022 Mario Hewera</copyright>
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
         <authorEmail>mh@villaester.de</authorEmail>
         <authorUrl>www.villaester.de</authorUrl>
         <version>1.0.0</version>
-        <description>Kleine Call to action Toolbar</description>
+        <description>Call to action Toolbar</description>
         <namespace path="src">Joomla\Module\CTAToolbar</namespace>
         <files>
             <filename module="mod_cta_toolbar">mod_cta_toolbar.php</filename>
@@ -30,12 +30,18 @@
                 <fieldset name="icons" label="Icons" class="ctaIconsContainer"
                 addfieldprefix="Joomla\Module\CTAToolbar\Site\Field"
                 >
+                    <field name="Hinweis"
+                           type="note"
+                           class="alert alert-info"
+                           label="Hinweis"
+                           description="Wenn bei den Farben keine Auswahl getroffen wird, wird die Farbe aus den Einstellungen übernommen"
+                    />
                     <field name="cta_modal"
                            type="Ctamodal"
                            hiddenlabel="true"
                     />
                     <field
-                            name="sublogos"
+                            name="subitems"
                             type="subform"
                             label=""
                             description="CTA Icons"
@@ -43,7 +49,7 @@
                             min="1"
                             max="10"
                     >
-                        <form>
+                      <form>
                           <field
                             name="label"
                             type="text"
@@ -51,17 +57,35 @@
                             description=""
                           />
                           <field
+                            name="textColor"
+                            type="color"
+                            format="rgba"
+                            label="Item Textfarbe"
+                            description="" />
+                          <field
+                            name="textHoverColor"
+                            type="color"
+                            format="rgba"
+                            label="Item Hover-Textfarbe"
+                            description="" />
+                          <field
+                            name="textBackgroundColor"
+                            type="color"
+                            format="rgba"
+                            label="Item  Hintergrundfarbe"
+                            description="" />
+                          <field
+                            name="textHoverBackgroundColor"
+                            type="color"
+                            format="rgba"
+                            label="Item  Hover-Hintergrundfarbe"
+                            description="" />
+                          <field
                             name="icon"
                             type="Icon"
                             label="Icon"
                             description=""
                             default=""
-                          />
-                          <field
-                            name="iconClass"
-                            type="text"
-                            label="Klasse"
-                            description=""
                           />
                           <field
                             name="url"
@@ -78,86 +102,141 @@
                           >
                             <option value="_self">Gleicher Tab</option>
                             <option value="_blank">Neuer Tab</option>
-                            <option value="_parent">Elternfenster</option>
-                            <option value="_top">Ganzes Fenster</option>
                           </field>
                         </form>
                     </field>
                 </fieldset>
-                <fieldset name="Einstellungen" label="Einstellungen">
-                  <fieldset name="toolbarsetting" label="Toolbar">
-                    <field
-                      name="position"
-                      default="top"
-                      type="list"
-                      label="Toolbar-Ausrichtung"
-                      description=""
-                    >
-                      <option value="top">oben</option>
-                      <option value="bottom">unten</option>
-                    </field>
-                    <field
-                      name="sticky"
-                      default="nonsticky"
-                      type="list"
-                      label="Sticky-Toolbar?"
-                      description=""
-                    >
-                        <option value="sticky">Ja</option>
-                        <option value="nonsticky">Nein</option>
-                    </field>
-                    <field
-                      name="height"
-                      type="text"
-                      default="fit-content"
-                      label="Toolbar-Höhe"
-                      description=""
-                    />
-                    <field
-                      name="width"
-                      type="text"
-                      default="100vw"
-                      label="Toolbar-Breite"
-                      description=""
-                    />
-                    <field
-                      name="backgroundcolor"
-                      type="color"
-                      default="#eee"
-                      format="rgba"
-                      label="Hintergrund-Farbe"
-                      description="" />
-                  </fieldset>
-                  <fieldset name="iconsetting" label="Icons">
-                    <field
-                            name="iconcolor"
-                            type="color"
-                            default="#000"
-                            format="rgba"
-                            label="Icon-Farbe"
-                            description="" />
-                    <field
-                            name="spacing"
-                            default="space-between"
-                            type="list"
-                            label="Icon-Anordung"
-                            description=""
-                    >
-                        <option value="flex-start">Anfang</option>
-                        <option value="center">Mittig</option>
-                        <option value="flex-end">Ende</option>
-                        <option value="space-between">Space-between</option>
-                        <option value="space-around">Space-around</option>
-                    </field>
-                    <field
-                            name="size"
-                            default="30px"
-                            type="text"
-                            label="Icon-Größe"
-                            description=""
-                    />
-                  </fieldset>
-                </fieldset>
+                    <fieldset name="Einstellungen" label="Einstellungen">
+                        <fieldset name="toolbarsetting" label="Toolbar">
+                            <field
+                              name="toolbarPosition"
+                              default="top"
+                              type="radio"
+                              label="Toolbarposition"
+                              class="btn-group"
+                            >
+                              <option value="top">Oben</option>
+                              <option value="bottom">Unten</option>
+                              <option value="left">Links</option>
+                              <option value="right">Rechts</option>
+                            </field>
+                            <field
+                              name="boxAlign"
+                              default="start"
+                              type="radio"
+                              label="Ausrichtung Inhalt"
+                              class="btn-group"
+                            >
+                              <option value="start">Anfang</option>
+                              <option value="center">Mitte</option>
+                              <option value="end">Ende</option>
+                            </field>
+                            <field
+                              name="hideable"
+                              default="visible"
+                              type="radio"
+                              label="Ausblendbar?"
+                              class="btn-group"
+                            >
+                                <option value="hideable">Ja</option>
+                                <option value="visible">Nein</option>
+                            </field>
+                            <field
+                              name="enableMobile"
+                              default="false"
+                              type="radio"
+                              label="Alternative Ausrichtung für kleinen Viewport?"
+                              class="btn-group btn-group-yesno"
+                            >
+                                <option value="true">JYes</option>
+                                <option value="false">JNo</option>
+                            </field>
+                            <field
+                                    name="breakpoint"
+                                    default="960px"
+                                    type="text"
+                                    label="Breakpoint(width)"
+                                    showon="enableMobile:true"
+                            />
+                            <field
+                                    name="toolbarPositionMobile"
+                                    default="top"
+                                    type="radio"
+                                    label="Toolbarposition für kleinen Viewport"
+                                    showon="enableMobile:true"
+                                    class="btn-group"
+                            >
+                                <option value="top">Oben</option>
+                                <option value="bottom">Unten</option>
+                                <option value="left">Links</option>
+                                <option value="right">Rechts</option>
+                            </field>
+                            <field
+                                    name="iconSize"
+                                    default="30px"
+                                    type="text"
+                                    label="Icon-Größe"
+                                    description=""
+                            />
+                            <field
+                                    name="fontSize"
+                                    default="12px"
+                                    type="text"
+                                    label="Text-Größe"
+                                    description=""
+                            />
+                            <field
+                                    name="animationStyle"
+                                    default="single"
+                                    type="radio"
+                                    label="Animationsart"
+                                    class="btn-group"
+                            >
+                                <option value="single">Items einzeln animieren</option>
+                                <option value="group">Items als Gruppe animieren</option>
+                            </field>
+                            <field
+                                    name="groupBackgroundColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Hintergrund-Farbe"
+                                    description=""
+                                    showon="animationStyle:group"
+                            />
+                        </fieldset>
+                        <fieldset name="globalColors" label="Globale Farbeinstellungen">
+                            <field
+                                    type="note"
+                                    class="alert alert-info"
+                                    label="Hinweis"
+                                    description="Hier können die Globalen Farbeinstellungen vorgenommen werden. Diese gelten als default, solange kein anderer Wert zugewiesen wird"
+                            />
+                            <field
+                                    name="globalTextColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Item Textfarbe"
+                                    description="" />
+                            <field
+                                    name="globalTextHoverColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Item Hover-Textfarbe"
+                                    description="" />
+                            <field
+                                    name="globalTextBackgroundColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Item  Hintergrundfarbe"
+                                    description="" />
+                            <field
+                                    name="globalTextHoverBackgroundColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Item  Hover-Hintergrundfarbe"
+                                    description="" />
+                        </fieldset>
+                    </fieldset>
                 <fieldset name="advanced">
                     <field
                             name="layout"

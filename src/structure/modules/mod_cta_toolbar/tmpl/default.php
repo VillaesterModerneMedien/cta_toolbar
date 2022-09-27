@@ -8,8 +8,6 @@ $wa = $app->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('mod_cta_toolbar', './modules/mod_cta_toolbar/assets/css/all.min.css');
 $wa->registerAndUseStyle('mod_cta_toolbar_custom', './modules/mod_cta_toolbar/assets/css/custom.css');
 
-
-
 ?>
 
 <div id="wrapperfront"
