@@ -1,142 +1,93 @@
-.top{
-  top:0;
-  left:0;
-  z-index:9999999;
+#itemContainer .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
+  text-decoration: none!important;
 }
-.bottom{
-  bottom:0;
-  left:0;
-  z-index:9999999;
-}
-.flex-start
+#itemContainer .item:hover .iconText
 {
-  justify-content: flex-start;
+  text-decoration: underline;
 }
-.flex-end
-{
-  justify-content: flex-end;
+
+.item > a{
+  display:flex;
+  align-items: center;
+  gap:20px;
+  margin:5px;
+  padding:5px;
+  flex-direction: $direction;
+  font-size: $textSize;
 }
-.center
+.item
 {
-  justify-content: center;
+  width:fit-content;
+  position:relative;
+  border-radius:$borderRadius;
 }
-.space-between
+.item:not(.itemTab .item)
 {
-  justify-content: space-between;
+  transition: .3s;
 }
-.space-around
+.itemIcon
 {
-  justify-content: space-around;
+  font-size: $iconSize;
 }
-.sticky
+
+.item:not(.toggleButton.item):hover
 {
+ transform:$animation ;
+}
+.item a:hover, .item a
+{
+  background-color:transparent!important;
+}
+
+#itemContainer
+{
+  list-style: none;
   position:fixed;
-}
-.nonsticky
-{
-  position:absolute;
-}
-#wrapperfront
-{
   display:flex;
-  align-items: center;
-  flex-direction: row;
+  flex-direction: $containerDirection;
+  width:fit-content;
+  z-index:999999;
+  gap:3px;
+  transform:$translation;
+  align-items:$alignItems;
+  justify-content:$justifyContent;
 }
 
-/*---------------BACKEND-------------*/
-.hide
+.toggleButton.item
 {
-  display:none !important;
-}
-#ctaContainer i
-{
-  font-size:25px;
-  margin-right:20px;
-}
-#ctaContainer button
-{
-  height:42px;
-  font-size:15px;
-}
-#ctaContainer
-{
-  display:flex;
-  align-items: center;
-  justify-content: flex-start;
+  padding: unset!important;
 }
 
+@media(max-width:$breakpoint)
+{
+  #itemContainer
+  {
+   // transform:$translationMobile!important;
+  }
+  .toggleButton
+  {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1em;
+    background-color:$globalBackgroundColor;
+    color:$globalTextColor;
+    font-size:$iconSize;
+  }
+  .toggleButton a:hover
+  {
+    color:$globalTextHoverColor;
+  }
+  .item:hover
+  {
+    transform:unset!important;
+  }
+}
 
-/*Iconauflistung*/
-.ctaIconlistWrapper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-}
-.ctaIconOptions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  top: 2%;
-  width: 96%;
-  left: 2%;
-  height: 40px;
-}
-.ctaIconOptions select {
-  word-wrap: normal;
-  height: 100%;
-  width: 200px;
-}
-.ctaIconOptions input {
-  height: 100%;
-  width: calc(100% - 200px - 2%);
-  margin-left: 2%;
-}
-.ctaIconContent {
-  position: relative;
-  top: 4%;
-  width: 96%;
-  left: 2%;
-  overflow: scroll;
-  height: 92%;
-}
-.ctaIconlistStyle{
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(15, minmax(0, 1fr));
-  padding:0px;
-
-}
-.ctaIconlistStyle li
+@media(min-width:$breakpoint)
 {
-  font-size:20px;
-  padding:20px 5px;
-  cursor: pointer;
-  border: 0.5px solid #ccc;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-}
-.ctaIconlistStyle li:hover
-{
-  color: #007dbb;
-  font-size:24px;
-  padding: 8px 3px;
-}
-.modal-content
-{
-  height:90vh;
-  overflow:auto;
-}
-.modal-body
-{
-  padding: 40px !important;
-  overflow:hidden!important;
-}
-.modal-lg
-{
-  max-width: 90vw !important;
-  max-height: 90vh !important;
+  .toggleButton
+  {
+    display: none!important;
+  }
 }

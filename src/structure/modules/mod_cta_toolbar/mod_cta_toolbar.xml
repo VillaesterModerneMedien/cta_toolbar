@@ -106,31 +106,55 @@
                         </form>
                     </field>
                 </fieldset>
+
                     <fieldset name="Einstellungen" label="Einstellungen">
+                        <fieldset name="compiling" label="CSS Compiling">
+                            <field name="compile"
+                                   type="checkbox"
+                                   label="Style neu Compilieren"
+                                   value="1" />
+                            <field name="Hinweis"
+                                   type="note"
+                                   class="alert alert-info"
+                                   label="Wichtig"
+                                   description="Bitte nach Änderungen aktivieren. Bei Seitenaufruf wird die CSS Datei neu erzeugt. Nach Neuladen der Seite die Checkbox wieder ausschalten."
+                            />
+                        </fieldset>
                         <fieldset name="toolbarsetting" label="Toolbar">
                             <field
-                              name="toolbarPosition"
+                              name="verticalPosition"
                               default="top"
                               type="radio"
-                              label="Toolbarposition"
+                              label="Vertikale Ausrichtung"
                               class="btn-group"
                             >
-                              <option value="top">Oben</option>
-                              <option value="bottom">Unten</option>
+                                <option value="top">Oben</option>
+                                <option value="middle">Mitte</option>
+                                <option value="bottom">Unten</option>
+                            </field>
+                            <field
+                              name="horizontalPosition"
+                              default="start"
+                              type="radio"
+                              label="Horizontale Ausrichtung"
+                              class="btn-group"
+                            >
                               <option value="left">Links</option>
+                              <option value="center">Mitte</option>
                               <option value="right">Rechts</option>
                             </field>
                             <field
-                              name="boxAlign"
-                              default="start"
-                              type="radio"
-                              label="Ausrichtung Inhalt"
-                              class="btn-group"
-                            >
-                              <option value="start">Anfang</option>
-                              <option value="center">Mitte</option>
-                              <option value="end">Ende</option>
-                            </field>
+                                    name="offsetX"
+                                    default="0px"
+                                    type="text"
+                                    label="Versatz horizontal"
+                            />
+                            <field
+                                    name="offsetY"
+                                    default="0px"
+                                    type="text"
+                                    label="Versatz vertical"
+                            />
                             <field
                               name="hideable"
                               default="visible"
@@ -166,9 +190,8 @@
                                     showon="enableMobile:true"
                                     class="btn-group"
                             >
-                                <option value="top">Oben</option>
-                                <option value="bottom">Unten</option>
                                 <option value="left">Links</option>
+                                <option value="center">Mitte</option>
                                 <option value="right">Rechts</option>
                             </field>
                             <field
@@ -186,6 +209,13 @@
                                     description=""
                             />
                             <field
+                                    name="borderRadius"
+                                    default="5px"
+                                    type="text"
+                                    label="Border Radius"
+                                    description=""
+                            />
+                            <field
                                     name="animationStyle"
                                     default="single"
                                     type="radio"
@@ -195,14 +225,6 @@
                                 <option value="single">Items einzeln animieren</option>
                                 <option value="group">Items als Gruppe animieren</option>
                             </field>
-                            <field
-                                    name="groupBackgroundColor"
-                                    type="color"
-                                    format="rgba"
-                                    label="Hintergrund-Farbe"
-                                    description=""
-                                    showon="animationStyle:group"
-                            />
                         </fieldset>
                         <fieldset name="globalColors" label="Globale Farbeinstellungen">
                             <field

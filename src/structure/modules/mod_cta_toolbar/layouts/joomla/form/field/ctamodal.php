@@ -54,11 +54,9 @@ $html .= '</div>';
 ); ?>
 
 <script>
-    var jtfUploadFile = function jtfUploadFile(elm, id) {
+    var chooseIcon = function chooseIcon(elm, id) {
         var ctaStyleSelect = $('.ctaIconsContainer').find('#cta-modal-box .ctaStyleSelect');
-
-
-
+        
         $(elm).on('click', function() {
             $(ctaStyleSelect).val('fa-solid');
             $('.ctaIconlist li').attr('data-objectid', id);
@@ -82,8 +80,8 @@ $html .= '</div>';
         $(modalButtons).each(function(index, elm){
             var objectId = $(this).find('input[type="hidden"]').attr('id');
             $(this).parent().find('i').attr('id', 'icon_' + objectId);
-            var jtfUploadFile = window.jtfUploadFile || {};
-            jtfUploadFile(this, objectId);
+            var chooseIcon = window.chooseIcon || {};
+            chooseIcon(this, objectId);
         });
         $(ctaStyleSelect).on('change', function (e) {
             e.preventDefault();
@@ -137,15 +135,15 @@ $html .= '</div>';
             document.formvalidator = new JFormValidator();
 
             if (!!row.querySelector('.ctaContainer')) {
-                var jtfUploadFile = window.jtfUploadFile || {};
+                var chooseIcon = window.chooseIcon || {};
                 Array.prototype.forEach.call(row.querySelectorAll('.ctaContainer'), function (e) {
                     var modalButtons =  $(e).find('button');
 
                     $(modalButtons).each(function(index, elm){
                         var objectId = $(this).find('input[type="hidden"]').attr('id');
                         $(this).parent().find('i').attr('id', 'icon_' + objectId);
-                        var jtfUploadFile = window.jtfUploadFile || {};
-                        jtfUploadFile(this, objectId);
+                        var chooseIcon = window.chooseIcon || {};
+                        chooseIcon(this, objectId);
                     });
                 });
             }

@@ -36,7 +36,7 @@ $app = Factory::getApplication();
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = $app->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('mod_cta_toolbar', './modules/mod_cta_toolbar/assets/css/all.min.css');
-$wa->registerAndUseStyle('mod_cta_toolbar_custom', './modules/mod_cta_toolbar/assets/css/custom.css');
+$wa->registerAndUseStyle('mod_cta_toolbar_custom', './modules/mod_cta_toolbar/assets/css/backend.css');
 
 $icondata = explode(",", $value);
 if (count($icondata) > 1)
@@ -53,17 +53,17 @@ else
     <i class="<?= $iconklasse; ?>"></i>
     <button
             type="button"
-            class="btn btn-sm btn-info w5rem mb-1 ctaModalButton"
+            class="btn btn-sm btn-info w5rem ctaModalButton"
             data-bs-id="<?php echo $id; ?>"
             data-bs-toggle="modal"
             data-bs-target="#cta-modal-box"
     >
         Icon ändern 
         <input
-                type="hidden"
-                name="<?php echo $name; ?>"
-                id="<?php echo $id; ?>"
-                value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
+            type="hidden"
+            name="<?php echo $name; ?>"
+            id="<?php echo $id; ?>"
+            value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
             <?php echo implode(' ', $attributes); ?>
         >
     </button>

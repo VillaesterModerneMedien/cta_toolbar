@@ -13,6 +13,18 @@ use Joomla\CMS\Helper\ModuleHelper;
 use Joomla\Module\CTAToolbar\Site\Helper\CTAHelper;
 
 
-$helper = CTAHelper::getContent($params);
+$layout         = $params->get('layout', 'default');
+$content        = CTAHelper::getContent($params);
+$parameters     = CTAHelper::getParameters($params);
 
-require ModuleHelper::getLayoutPath('mod_cta_toolbar', $params->get('layout', 'default'));
+if ($params->get('compile') === '1')
+{
+	$scss = CTAHelper::writeCss($params);
+}
+
+if($parameters->get('horizontalPosition') === 'center')
+{
+	$layout .= '_switcher';
+}
+
+require ModuleHelper::getLayoutPath('mod_cta_toolbar', $params->get('mod_cta_toolbar', $layout));
