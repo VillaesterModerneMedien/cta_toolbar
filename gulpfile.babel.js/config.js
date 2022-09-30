@@ -37,10 +37,10 @@ export const config = {
     src: './src/',
     dest: './dist/',
     copy: {
-      src: ['src/structure/**/**', 'src/structure/**/.*', '!src/structure/**/*.{php,html,xml,ini,less,json,css}', '!src/structure/**/.*.{php,html,xml,ini,less,json,css}'],
-      replacesrc: ['src/structure/**/**.{php,html,xml,ini,less,json,css}', 'src/structure/**/.*.{php,html,xml,ini,less,json,css}'],
+      src: ['src/structure/**/**', 'src/structure/**/.*', '!src/structure/**/*.{php,html,xml,ini,less,json,css,scss,js}', '!src/structure/**/.*.{php,html,xml,ini,less,json,css,scss,js}'],
+      replacesrc: ['src/structure/**/**.{php,html,xml,ini,less,json,css,scss,js}', 'src/structure/**/.*.{php,html,xml,ini,less,json,css,scss,js}'],
       dest: 'dist/',
-      watch: ['src/structure/**/*.{php,html,xml,ini,less,json,css}'],
+      watch: ['src/structure/**/*.{php,html,xml,ini,less,json,css,scss,js}'],
     }
   }
 };

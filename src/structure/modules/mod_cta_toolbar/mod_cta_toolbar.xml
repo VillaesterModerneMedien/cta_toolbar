@@ -156,16 +156,6 @@
                                     label="Versatz vertical"
                             />
                             <field
-                              name="hideable"
-                              default="visible"
-                              type="radio"
-                              label="Ausblendbar?"
-                              class="btn-group"
-                            >
-                                <option value="hideable">Ja</option>
-                                <option value="visible">Nein</option>
-                            </field>
-                            <field
                               name="enableMobile"
                               default="false"
                               type="radio"
@@ -215,16 +205,6 @@
                                     label="Border Radius"
                                     description=""
                             />
-                            <field
-                                    name="animationStyle"
-                                    default="single"
-                                    type="radio"
-                                    label="Animationsart"
-                                    class="btn-group"
-                            >
-                                <option value="single">Items einzeln animieren</option>
-                                <option value="group">Items als Gruppe animieren</option>
-                            </field>
                         </fieldset>
                         <fieldset name="globalColors" label="Globale Farbeinstellungen">
                             <field

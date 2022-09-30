@@ -66,6 +66,8 @@ class CTAHelper
 		$containerDirection= 'column';
 		$translateX = '0px';
 		$translateY = '0px';
+		$translateXm = '0px';
+		$translateYm = '0px';
 		$animateX = '0px';
 		$animateY = '0px';
 		$alignItems = 'start';
@@ -74,6 +76,7 @@ class CTAHelper
 		$togglePadding = '';
 		$mobileTransform = 'translate(0px, 0px);';
 		$breakpoint = '960px';
+		$horizontalPositionM = '';
 
 		/*** Items ***/
 
@@ -180,7 +183,7 @@ class CTAHelper
 			$addCss .= '.itemToggle{margin-top:0;margin-bottom:0;}';
 		}
 
-		$addCss .= '#itemContainer{';
+		$addCss .= '#desktopContainer{';
 		$addCss .= $horizontalPosition;
 		$addCss .= $verticalPosition;
 		$addCss .= '}';
@@ -214,26 +217,38 @@ class CTAHelper
 		{
 			//$addCss .='@import(./group.css)';
 			$breakpoint = $parameters['breakpoint'];
-			$verticalPosition = 'bottom: calc(-100% -  ' . $parameters['iconSize'] . ' - 1.25em - 8px);';
+			$verticalPositionM = 'bottom: 0';
+			$translateYm = '-10px';
+
+
 			switch($parameters['toolbarPositionMobile'])
 			{
 				case 'left':
-					$horizontalPosition = 'left: 0;';
+					$horizontalPositionM = 'left: 0;';
+					$translateXm = '10px';
+					$addCss .='#mobileContainer{.itemContainer {bottom:-100%;}}';
 					break;
 				case 'center':
-					$horizontalPosition = 'left: 50vw;';
-					$mobileTransform = 'translate(-50%, 0);';
+					$horizontalPositionM = 'left: 50vw;';
+					$translateXm = '-50%';
+					$addCss .='#mobileContainer{align-items:center}';
 					break;
 				case 'right':
-					$horizontalPosition = 'right: 0;';
+					$horizontalPositionM = 'right: 0;';
+					$translateXm = '-10px';
+					$addCss .='#mobileContainer{align-items:end}';
+
 					break;
 			}
 
-			$addCss .= '@media(max-width:' . $breakpoint . '){';
-			$addCss .= '#itemContainer{';
-			$addCss .= $horizontalPosition;
-			$addCss .= $verticalPosition;
-			$addCss .= '}';
+			$addCss .='.toggleButton{';
+			$addCss .='width: calc(' . $parameters['iconSize'] . ' + 15px);';
+			$addCss .='height: calc(' . $parameters['iconSize'] . ' + 15px);';
+			$addCss .='}';
+
+			$addCss .= '#mobileContainer{';
+			$addCss .= $horizontalPositionM;
+			$addCss .= $verticalPositionM;
 			$addCss .= '}';
 		}
 		else
@@ -241,11 +256,7 @@ class CTAHelper
 			$breakpoint = '100vw';
 		}
 
-		/***Mobile / Gruppenstyling***/
-		$addCss .='.toggleButton{';
-		$addCss .='width: calc(' . $parameters['iconSize'] . ' + 15px);';
-		$addCss .='height: calc(' . $parameters['iconSize'] . ' + 15px);';
-		$addCss .='}';
+
 
 
 
@@ -256,6 +267,7 @@ class CTAHelper
 			'$iconSize'                     => $parameters['iconSize'],
 			'$textSize'                     => $parameters['fontSize'],
 			'$translation'                  => 'translate(calc(' . $translateX . ' + ' . $parameters['offsetX'] . ') , calc(' . $translateY . ' + ' . $parameters['offsetY'] . ') );',
+			'$translationM'                 => 'translate(' . $translateXm . ', ' . $translateYm . ') );',
 			'$animation'                    => 'translate(' . $animateX . ' , ' . $animateY . ' );',
 			'$alignItems'                   => $alignItems,
 			'$justifyContent'               => $justifyContent,

@@ -7,12 +7,14 @@ $app = Factory::getApplication();
 $wa = $app->getDocument()->getWebAssetManager();
 $wa->registerAndUseStyle('mod_cta_toolbar', './modules/mod_cta_toolbar/assets/css/all.min.css');
 $wa->registerAndUseStyle('mod_cta_toolbar_custom', './modules/mod_cta_toolbar/assets/css/toolbar.css');
+$wa->registerAndUseStyle('mod_cta_toolbar_custom', './modules/mod_cta_toolbar/assets/js/functions.js');
+
 $counter = 0;
 
 ?>
 
 
-    <div id="itemContainer">
+    <div class="itemContainer">
 		<?php foreach ($content as $item):?>
         <?php $counter++; ?>
             <div class="itemTab">

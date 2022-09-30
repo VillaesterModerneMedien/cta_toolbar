@@ -1,7 +1,10 @@
-#itemContainer .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
+body{
+  position:relative;
+}
+.itemContainer .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
   text-decoration: none!important;
 }
-#itemContainer .item:hover .iconText
+.itemContainer .item:hover .iconText
 {
   text-decoration: underline;
 }
@@ -39,16 +42,21 @@
   background-color:transparent!important;
 }
 
-#itemContainer
+#desktopContainer
+{
+  position:fixed;
+  transform:$translation;
+  z-index: 9999999;
+}
+
+.itemContainer
 {
   list-style: none;
-  position:fixed;
   display:flex;
   flex-direction: $containerDirection;
   width:fit-content;
   z-index:999999;
   gap:3px;
-  transform:$translation;
   align-items:$alignItems;
   justify-content:$justifyContent;
 }
@@ -60,33 +68,69 @@
 
 @media(max-width:$breakpoint)
 {
-  #itemContainer
-  {
-   // transform:$translationMobile!important;
-  }
-  .toggleButton
+  #mobileContainer
   {
     display:flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1em;
-    background-color:$globalBackgroundColor;
-    color:$globalTextColor;
-    font-size:$iconSize;
+    flex-direction:column-reverse;
+    position: fixed;
+    z-index:9999999;
+    transform:$translationM;
+    .itemContainer
+    {
+      transform: translate(0px, 150%);
+      transition: .5s;
+    }
+    .item:not(.toggleButton.item)
+    {
+      width:100%;
+      padding-left:8px;
+      padding-right:8px;
+
+    }
+    .item:not(.toggleButton.item):hover
+    {
+      transform:unset!important;
+    }
+    .toggleButton
+    {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 1em;
+      background-color:$globalBackgroundColor;
+      color:$globalTextColor;
+      font-size:$iconSize;
+      margin-top:3px;
+      transition: 1s;
+      margin-top:10px;
+    }
+    .toggleButton:hover, .toggleButton:active
+    {
+      color:$globalTextHoverColor;
+      background-color: $globalHoverBackgroundColor;
+      scale:110%;
+    }
+    .show
+    {
+      transform: translate(0px, 0px);
+    }
   }
-  .toggleButton a:hover
+  #desktopContainer
   {
-    color:$globalTextHoverColor;
+    display:none;
   }
-  .item:hover
-  {
-    transform:unset!important;
+
+  .toggleStat{
+    transform:rotate(180deg);
   }
 }
 
 @media(min-width:$breakpoint)
 {
-  .toggleButton
+  #desktopContainer {
+    display: inline-block !important;
+  }
+  #mobileContainer
   {
     display: none!important;
   }
