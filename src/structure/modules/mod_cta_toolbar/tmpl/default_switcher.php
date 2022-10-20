@@ -13,7 +13,7 @@ $counter = 0;
 
 ?>
 
-
+<div id="desktopContainer">
     <div class="itemContainer">
 		<?php foreach ($content as $item):?>
         <?php $counter++; ?>
@@ -31,4 +31,5 @@ $counter = 0;
             </div>
 		<?php endforeach;?>
     </div>
+</div>
 

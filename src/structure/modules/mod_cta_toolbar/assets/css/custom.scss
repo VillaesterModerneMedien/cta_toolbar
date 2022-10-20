@@ -47,23 +47,62 @@ body{
   position:fixed;
   transform:$translation;
   z-index: 9999999;
+  display:flex;
+  flex-direction: column;
+  align-items: $toggleFlex;
+
+  .itemContainer
+  {
+    list-style: none;
+    display:flex;
+    flex-direction: $containerDirection;
+    width:fit-content;
+    z-index:999999;
+    gap:3px;
+    align-items:$alignItems;
+    justify-content:$justifyContent;
+    transform: translate($toggleTranslation, 0px);
+    transition: .5s;
+  }
+  .item:not(.toggleButton.item):hover
+  {
+    transform:unset!important;
+  }
+  .toggleButton
+  {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1em;
+    background-color:$globalBackgroundColor;
+    color:$globalTextColor;
+    font-size:$iconSize;
+    margin-top:3px;
+    transition: 1s;
+    margin-top:10px;
+  }
+  .toggleButton:hover, .toggleButton:active
+  {
+    color:$globalTextHoverColor;
+    background-color: $globalHoverBackgroundColor;
+    scale:110%;
+  }
+  .show
+  {
+    transform: translate(0px, 0px);
+  }
 }
 
-.itemContainer
-{
-  list-style: none;
-  display:flex;
-  flex-direction: $containerDirection;
-  width:fit-content;
-  z-index:999999;
-  gap:3px;
-  align-items:$alignItems;
-  justify-content:$justifyContent;
-}
+
 
 .toggleButton.item
 {
   padding: unset!important;
+}
+
+.hide
+{
+  display: none;
 }
 
 @media(max-width:$breakpoint)
@@ -75,6 +114,10 @@ body{
     position: fixed;
     z-index:9999999;
     transform:$translationM;
+
+    #mobileMenu li {
+      margin-top: 5px;
+    }
     .itemContainer
     {
       transform: translate(0px, 150%);
@@ -127,9 +170,10 @@ body{
 
 @media(min-width:$breakpoint)
 {
-  #desktopContainer {
-    display: inline-block !important;
-  }
+ /* #desktopContainer {
+    display: flex !important;
+
+  }*/
   #mobileContainer
   {
     display: none!important;

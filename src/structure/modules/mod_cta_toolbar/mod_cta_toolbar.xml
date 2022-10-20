@@ -41,6 +41,20 @@
                            hiddenlabel="true"
                     />
                     <field
+                            name="toggleOpen"
+                            type="Icon"
+                            label="Toggleicon Öffnen"
+                            description=""
+                            default="fa-list-dots fa-solid"
+                    />
+                    <field
+                            name="toggleClose"
+                            type="Icon"
+                            label="Toggleicon Schließen"
+                            description=""
+                            default="fa-close fa-solid"
+                    />
+                    <field
                             name="subitems"
                             type="subform"
                             label=""
@@ -122,6 +136,27 @@
                         </fieldset>
                         <fieldset name="toolbarsetting" label="Toolbar">
                             <field
+                                    name="toggle"
+                                    default="false"
+                                    type="radio"
+                                    label="Schließbar machen?"
+                                    class="btn-group btn-group-yesno"
+                            >
+                                <option value="true">JYes</option>
+                                <option value="false">JNo</option>
+                            </field>
+                            <field
+                                    name="startStatusDesktop"
+                                    default="show"
+                                    type="radio"
+                                    label="Anfangszustand"
+                                    class="btn-group btn-group-yesno"
+                                    showon="toggle:true"
+                            >
+                                <option value="open">geöffnet</option>
+                                <option value="closed">geschlossen</option>
+                            </field>
+                            <field
                               name="verticalPosition"
                               default="top"
                               type="radio"
@@ -140,9 +175,9 @@
                               class="btn-group"
                             >
                               <option value="left">Links</option>
-                              <option value="center">Mitte</option>
                               <option value="right">Rechts</option>
                             </field>
+
                             <field
                                     name="offsetX"
                                     default="0px"
@@ -164,6 +199,17 @@
                             >
                                 <option value="true">JYes</option>
                                 <option value="false">JNo</option>
+                            </field>
+                            <field
+                                    name="startStatusMobile"
+                                    default="show"
+                                    type="radio"
+                                    label="Anfangszustand Mobile"
+                                    class="btn-group btn-group-yesno"
+                                    showon="enableMobile:true"
+                            >
+                                <option value="open">geöffnet</option>
+                                <option value="closed">geschlossen</option>
                             </field>
                             <field
                                     name="breakpoint"

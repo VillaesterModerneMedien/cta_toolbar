@@ -54,6 +54,8 @@ class CTAHelper
 			'globalTextBackgroundColor'      =>  $params->get('globalTextBackgroundColor',''),
 			'globalTextHoverBackgroundColor' =>  $params->get('globalTextHoverBackgroundColor',''),
 			'borderRadius'                   =>  $params->get('borderRadius',''),
+			'toogleOpen'                     =>  $params->get('toggleOpen',''),
+			'toggleClose'                    =>  $params->get('toggleClose',''),
 		];
 
 		$items = $params->get('subitems', '');
@@ -77,6 +79,8 @@ class CTAHelper
 		$mobileTransform = 'translate(0px, 0px);';
 		$breakpoint = '960px';
 		$horizontalPositionM = '';
+		$toggleTranslation = '0px';
+		$toggleFlex = 'flex-start';
 
 		/*** Items ***/
 
@@ -133,6 +137,8 @@ class CTAHelper
 				$translateX = 'calc(' . $parameters['iconSize'] . ' - 100% + 1.25em + 8px)';
 				$alignItems = 'end';
 				$itemPadding = '-left';
+				$toggleTranslation = '-100%';
+				$toggleFlex = 'flex-end';
 				break;
 
 			case 'center':
@@ -147,6 +153,7 @@ class CTAHelper
 				$translateX = 'calc(100% - ' . $parameters['iconSize'] . ' - 1.25em - 8px)';
 				$animateX = 'calc(' . $parameters['iconSize'] . ' - 100% + 1.25em + 8px + ' . $parameters['borderRadius'] . ')';
 				$itemPadding = '-right';
+				$toggleTranslation = '100%';
 				break;
 		}
 
@@ -215,11 +222,9 @@ class CTAHelper
 
 		if($parameters['enableMobile'] === 'true')
 		{
-			//$addCss .='@import(./group.css)';
 			$breakpoint = $parameters['breakpoint'];
 			$verticalPositionM = 'bottom: 0';
 			$translateYm = '-10px';
-
 
 			switch($parameters['toolbarPositionMobile'])
 			{
@@ -256,10 +261,6 @@ class CTAHelper
 			$breakpoint = '100vw';
 		}
 
-
-
-
-
 		/***SCSS Variabeln***/
 
 		$variables = [
@@ -278,6 +279,8 @@ class CTAHelper
 			'globalTextHoverColor'          => $parameters['globalTextHoverColor'],
 			'globalBackgroundColor'         => $parameters['globalTextBackgroundColor'],
 			'globalHoverBackgroundColor'    => $parameters['globalTextHoverBackgroundColor'],
+			'toggleTranslation'             => $toggleTranslation,
+			'toggleFlex'                    => $toggleFlex,
 		];
 
 

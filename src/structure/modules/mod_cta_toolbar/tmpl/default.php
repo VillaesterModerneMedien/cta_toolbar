@@ -11,11 +11,33 @@ $wa->registerAndUseScript('functions', './modules/mod_cta_toolbar/assets/js/func
 
 $counter = 0;
 $counterM = 0;
+$start ='';
+$toggleOpen = '';
+$toggleClose = '';
+$toggleOpenM = '';
+$toggleCloseM = '';
 
+if($parameters->get('startStatusDesktop') === 'open' || $parameters->get('toggle') === 'false')
+{
+    $start = 'show';
+    $toggleOpen = 'hide';
+}
+else
+{
+    $toggleClose = 'hide';
+}
+if($parameters->get('startStatusMobile') === 'open')
+{
+    $startM = 'show';
+    $toggleOpenM = 'hide';
+}
+else
+{
+    $toggleCloseM = 'hide';
+}
 ?>
-
 <div id="desktopContainer">
-    <ul class="itemContainer">
+    <ul class="itemContainer <?= $start; ?>" id="desktopMenu">
 		<?php foreach ($content as $item):?>
         <?php $counter++; ?>
             <li class="item item-<?=$counter?>">
@@ -26,11 +48,20 @@ $counterM = 0;
             </li>
 		<?php endforeach;?>
     </ul>
+    <?php if($parameters->get('toggle') === 'true') {?>
+        <div class="toggleButton item" id="toggleDesk">
+            <i id="toggleOpenDesk" class="<?=  $parameters->get('toggleOpen') ?> itemIcon fa-fw <?= $toggleOpen;?>"></i>
+            <i id="toggleCloseDesk" class="<?=  $parameters->get('toggleClose') ?> itemIcon fa-fw <?= $toggleClose;?>"></i>
+        </div>
+    <?php }?>
 </div>
 
 <div id="mobileContainer">
-    <a href="#" class="toggleButton item" id="toggle"><i class="itemIcon fa-solid fa-angle-up fa-fw"></i></a>
-    <ul class="itemContainer" id="mobileMenu">
+    <div class="toggleButton item" id="toggle">
+        <i id="toggleOpen" class="<?=  $parameters->get('toggleOpen') ?> itemIcon fa-fw <?= $toggleOpenM;?>"></i>
+        <i id="toggleClose" class="<?=  $parameters->get('toggleClose') ?> itemIcon fa-fw <?= $toggleCloseM;?>"></i>
+    </div>
+    <ul class="itemContainer <?= $startM; ?>" id="mobileMenu">
 		<?php foreach ($content as $item):?>
         <?php $counterM++; ?>
             <li class="item item-<?=$counterM?>">
