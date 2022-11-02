@@ -95,6 +95,18 @@
                             label="Item  Hover-Hintergrundfarbe"
                             description="" />
                           <field
+                            name="borderColor"
+                            type="color"
+                            format="rgba"
+                            label="Itemborder Farbe"
+                            description="" />
+                          <field
+                            name="borderHoverColor"
+                            type="color"
+                            format="rgba"
+                            label="Itemborder  Hoverfarbe"
+                            description="" />
+                          <field
                             name="icon"
                             type="Icon"
                             label="Icon"
@@ -147,7 +159,7 @@
                             </field>
                             <field
                                     name="startStatusDesktop"
-                                    default="show"
+                                    default="open"
                                     type="radio"
                                     label="Anfangszustand"
                                     class="btn-group btn-group-yesno"
@@ -169,7 +181,7 @@
                             </field>
                             <field
                               name="horizontalPosition"
-                              default="start"
+                              default="left"
                               type="radio"
                               label="Horizontale Ausrichtung"
                               class="btn-group"
@@ -202,7 +214,7 @@
                             </field>
                             <field
                                     name="startStatusMobile"
-                                    default="show"
+                                    default="open"
                                     type="radio"
                                     label="Anfangszustand Mobile"
                                     class="btn-group btn-group-yesno"
@@ -264,24 +276,40 @@
                                     type="color"
                                     format="rgba"
                                     label="Item Textfarbe"
-                                    description="" />
+                                    description=""
+                                    default="rgba(255, 255, 255, 1)"/>
                             <field
                                     name="globalTextHoverColor"
                                     type="color"
                                     format="rgba"
                                     label="Item Hover-Textfarbe"
-                                    description="" />
+                                    description=""
+                                    default="rgba(255, 255, 255, 1)"/>
                             <field
                                     name="globalTextBackgroundColor"
                                     type="color"
                                     format="rgba"
                                     label="Item  Hintergrundfarbe"
-                                    description="" />
+                                    description=""
+                                    default="rgba(17, 51, 94, 1)"/>
                             <field
                                     name="globalTextHoverBackgroundColor"
                                     type="color"
                                     format="rgba"
                                     label="Item  Hover-Hintergrundfarbe"
+                                    description=""
+                                    default="rgba(51, 153, 255, 1)"/>
+                            <field
+                                    name="globalBorderColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Itemborder Farbe"
+                                    description="" />
+                            <field
+                                    name="globalBorderHoverColor"
+                                    type="color"
+                                    format="rgba"
+                                    label="Itemborder  Hoverfarbe"
                                     description="" />
                         </fieldset>
                     </fieldset>

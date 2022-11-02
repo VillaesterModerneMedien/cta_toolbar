@@ -12,6 +12,7 @@ $wa->registerAndUseScript('functions', './modules/mod_cta_toolbar/assets/js/func
 $counter = 0;
 $counterM = 0;
 $start ='';
+$startM ='';
 $toggleOpen = '';
 $toggleClose = '';
 $toggleOpenM = '';

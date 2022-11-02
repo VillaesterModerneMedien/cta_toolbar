@@ -51,6 +51,8 @@ class CTAHelper
 			'animationStyle'                 =>  $params->get('animationStyle',''),
 			'globalTextColor'                =>  $params->get('globalTextColor',''),
 			'globalTextHoverColor'           =>  $params->get('globalTextHoverColor',''),
+			'globalBorderColor'              =>  $params->get('globalBorderColor',''),
+			'globalBorderHoverColor'         =>  $params->get('globalBorderHoverColor',''),
 			'globalTextBackgroundColor'      =>  $params->get('globalTextBackgroundColor',''),
 			'globalTextHoverBackgroundColor' =>  $params->get('globalTextHoverBackgroundColor',''),
 			'borderRadius'                   =>  $params->get('borderRadius',''),
@@ -81,19 +83,9 @@ class CTAHelper
 		$horizontalPositionM = '';
 		$toggleTranslation = '0px';
 		$toggleFlex = 'flex-start';
+		$animateM = '0px';
 
 		/*** Items ***/
-
-		if($parameters['horizontalPosition'] === 'center')
-		{
-			$addCss = ".itemContent {";
-			$addCss .= 'position: absolute;';
-			$addCss .= 'left: 0;';
-			$addCss .= 'width: 100%;';
-			$addCss .= $parameters['verticalPosition'] . ':-100%;';
-			$addCss .= '}';
-		}
-
 
 		foreach($items as $item)
 		{
@@ -101,31 +93,24 @@ class CTAHelper
 
 			$backgroundColor = !($item->textBackgroundColor) ? $parameters['globalTextBackgroundColor'] : $item->textBackgroundColor;
 			$textColor = !($item->textColor) ? $parameters['globalTextColor'] : $item->textColor;
+			$borderColor = !($item->borderColor) ? $parameters['globalBorderColor'] : $item->borderColor;
+			$borderHoverColor = !($item->borderHoverColor) ? $parameters['globalBorderHoverColor'] : $item->borderHoverColor;
 			$backgroundHoverColor = !($item->textHoverBackgroundColor) ? $parameters['globalTextHoverBackgroundColor'] : $item->textHoverBackgroundColor;
 			$textHoverColor = !($item->textHoverColor) ? $parameters['globalTextHoverColor'] : $item->textHoverColor;
 
 			$addCss .= '.item-' . $counter . '{';
 			$addCss .= 'color:' . $textColor . ';';
 			$addCss .= 'background-color:' . $backgroundColor . '; ';
+			$addCss .= 'border: 1px solid ' . $borderColor . '; ';
+			$addCss .= '}';
+			$addCss .= '.item-' . $counter . ':hover{';
+			$addCss .= 'border: 1px solid ' . $borderHoverColor . '; ';
 			$addCss .= '}';
 			$addCss .= '.item-' . $counter . ':hover, .item-' . $counter . ' a:hover{';
 			$addCss .= 'color:' . $textHoverColor . ';';
 			$addCss .= 'background-color:' . $backgroundHoverColor . '; ';
 			$addCss .= '}';
 
-			/***Stylying für mittlere positionierung***/
-			if($parameters['horizontalPosition'] === 'center')
-			{
-				$addCss .= '.itemTab:hover .item.itemContent.item-' . $counter . '{';
-				$addCss .= $parameters['verticalPosition'] . ':100%;';
-				$addCss .= 'color:' . $textHoverColor . ';';
-				$addCss .= 'background-color:' . $backgroundHoverColor . '; ';
-				$addCss .= '}';
-				$addCss .= '.item.itemContent.item-' . $counter . ':hover .item.itemTab.item-' . $counter . '{';
-				$addCss .= 'color:' . $textHoverColor . ';';
-				$addCss .= 'background-color:' . $backgroundHoverColor . '; ';
-				$addCss .= '}';
-			}
 		}
 
 		/*** Positionierung Itemcontainer und davon abhängiges Styling***/
@@ -141,13 +126,6 @@ class CTAHelper
 				$toggleFlex = 'flex-end';
 				break;
 
-			case 'center':
-				$horizontalPosition = 'left: 50vw;';
-				$translateX = '-50%';
-				$direction = 'column';
-				$containerDirection = 'row';
-				break;
-
 			case 'right':
 				$horizontalPosition = 'right: 0;';
 				$translateX = 'calc(100% - ' . $parameters['iconSize'] . ' - 1.25em - 8px)';
@@ -160,12 +138,6 @@ class CTAHelper
 		switch ($parameters['verticalPosition']){
 			case 'top':
 				$verticalPosition = 'top: 0;';
-				if($parameters['horizontalPosition'] === 'center')
-				{
-					$translateY    = 'calc(' . $parameters['iconSize'] . ' - 100% + 1.25em + 8px)';
-					$itemPadding   = '-top';
-					$togglePadding = '-bottom';
-				}
 				break;
 
 			case 'middle':
@@ -175,12 +147,6 @@ class CTAHelper
 
 			case 'bottom':
 				$verticalPosition = 'bottom: 0;';
-				if($parameters['horizontalPosition'] === 'center')
-				{
-					$translateY = 'calc(100% - ' . $parameters['iconSize'] . ' - 1.25em - 8px)';
-					$itemPadding = '-bottom';
-					$togglePadding = '-top';
-				}
 				break;
 		}
 
@@ -225,6 +191,7 @@ class CTAHelper
 			$breakpoint = $parameters['breakpoint'];
 			$verticalPositionM = 'bottom: 0';
 			$translateYm = '-10px';
+			$animateM = 'calc(100% + ' . $parameters['iconSize'] . ' + 1.25em + 8px + 10px)' ;
 
 			switch($parameters['toolbarPositionMobile'])
 			{
@@ -264,23 +231,26 @@ class CTAHelper
 		/***SCSS Variabeln***/
 
 		$variables = [
-			'$direction'                    => $direction,
-			'$iconSize'                     => $parameters['iconSize'],
-			'$textSize'                     => $parameters['fontSize'],
-			'$translation'                  => 'translate(calc(' . $translateX . ' + ' . $parameters['offsetX'] . ') , calc(' . $translateY . ' + ' . $parameters['offsetY'] . ') );',
-			'$translationM'                 => 'translate(' . $translateXm . ', ' . $translateYm . ') );',
-			'$animation'                    => 'translate(' . $animateX . ' , ' . $animateY . ' );',
-			'$alignItems'                   => $alignItems,
-			'$justifyContent'               => $justifyContent,
-			'$borderRadius'                 => $parameters['borderRadius'],
-			'$containerDirection'           => $containerDirection,
-			'$breakpoint'                   => $breakpoint,
-			'globalTextColor'               => $parameters['globalTextColor'],
-			'globalTextHoverColor'          => $parameters['globalTextHoverColor'],
-			'globalBackgroundColor'         => $parameters['globalTextBackgroundColor'],
-			'globalHoverBackgroundColor'    => $parameters['globalTextHoverBackgroundColor'],
-			'toggleTranslation'             => $toggleTranslation,
-			'toggleFlex'                    => $toggleFlex,
+			'$direction'                        => $direction,
+			'$iconSize'                         => $parameters['iconSize'],
+			'$textSize'                         => $parameters['fontSize'],
+			'$translation'                      => 'translate(calc(' . $translateX . ' + ' . $parameters['offsetX'] . ') , calc(' . $translateY . ' + ' . $parameters['offsetY'] . ') );',
+			'$translationM'                     => 'translate(' . $translateXm . ', ' . $translateYm . ') );',
+			'$animation'                        => 'translate(' . $animateX . ' , ' . $animateY . ' );',
+			'$animationM'                       => 'translate( 0 , ' . $animateM . ' );',
+			'$alignItems'                       => $alignItems,
+			'$justifyContent'                   => $justifyContent,
+			'$borderRadius'                     => $parameters['borderRadius'],
+			'$containerDirection'               => $containerDirection,
+			'$breakpoint'                       => $breakpoint,
+			'$globalTextColor'                  => $parameters['globalTextColor'],
+			'$globalTextHoverColor'             => $parameters['globalTextHoverColor'],
+			'$borderColor'                      => $borderColor,
+			'$borderHoverColor'                 => $borderHoverColor,
+			'$globalBackgroundColor'            => $parameters['globalTextBackgroundColor'],
+			'$globalHoverBackgroundColor'       => $parameters['globalTextHoverBackgroundColor'],
+			'$toggleTranslation'                => $toggleTranslation,
+			'$toggleFlex'                       => $toggleFlex,
 		];
 
 
