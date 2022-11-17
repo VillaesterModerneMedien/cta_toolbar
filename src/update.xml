@@ -5,7 +5,7 @@
         <description>Bugfix Styling</description>
         <element>mod_cta_toolbar</element>
         <client>0</client>
-        <type>package</type>
+        <type>module</type>
         <version>1.0.1</version>
         <downloads>
             <downloadurl type="full" format="zip">https://github.com/VillaesterModerneMedien/cta_toolbar/releases/download/1.0.1/mod_cta_toolbar.zip</downloadurl>
