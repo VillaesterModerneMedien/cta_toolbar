@@ -7,7 +7,7 @@
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
         <authorEmail>mh@villaester.de</authorEmail>
         <authorUrl>www.villaester.de</authorUrl>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <description>Call to action Toolbar</description>
         <namespace path="src">Joomla\Module\CTAToolbar</namespace>
         <files>
@@ -311,6 +311,7 @@
                                     format="rgba"
                                     label="Itemborder  Hoverfarbe"
                                     description="" />
+
                         </fieldset>
                     </fieldset>
                 <fieldset name="advanced">
@@ -352,4 +353,7 @@
                 </fieldset>
             </fields>
         </config>
+        <updateservers>
+            <server type="extension" priority="2" name="CTA Toolbar">https://raw.githubusercontent.com/VillaesterModerneMedien/cta_toolbar/master/src/update.xml</server>
+        </updateservers>
     </extension>

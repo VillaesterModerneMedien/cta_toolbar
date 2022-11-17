@@ -98,10 +98,13 @@ class CTAHelper
 			$backgroundHoverColor = !($item->textHoverBackgroundColor) ? $parameters['globalTextHoverBackgroundColor'] : $item->textHoverBackgroundColor;
 			$textHoverColor = !($item->textHoverColor) ? $parameters['globalTextHoverColor'] : $item->textHoverColor;
 
-			$addCss .= '.item-' . $counter . '{';
+			$addCss .= '.item-' . $counter . ' {';
 			$addCss .= 'color:' . $textColor . ';';
 			$addCss .= 'background-color:' . $backgroundColor . '; ';
 			$addCss .= 'border: 1px solid ' . $borderColor . '; ';
+			$addCss .= '}';
+			$addCss .= '.item-' . $counter . ' a {';
+			$addCss .= 'color:' . $textColor . ';';
 			$addCss .= '}';
 			$addCss .= '.item-' . $counter . ':hover{';
 			$addCss .= 'border: 1px solid ' . $borderHoverColor . '; ';
@@ -225,7 +228,7 @@ class CTAHelper
 		}
 		else
 		{
-			$breakpoint = '100vw';
+			$breakpoint = '0px';
 		}
 
 		/***SCSS Variabeln***/

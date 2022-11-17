@@ -42,6 +42,11 @@ body{
 {
   background-color:transparent!important;
 }
+.itemContainer
+{
+  padding:0;
+  margin:0;
+}
 
 #desktopContainer
 {
@@ -63,6 +68,8 @@ body{
     justify-content:$justifyContent;
     transform: translate($toggleTranslation, 0px);
     transition: .5s;
+
+
   }
   .toggleButton
   {
