@@ -12,7 +12,7 @@ export const config = {
       baseDir: ['/dist/']
     },
     proxy: pjson.buildconfigs.proxy,
-    https: false,
+    https: true,
     open: false,
     debugInfo: false,
     watchTask: false,
