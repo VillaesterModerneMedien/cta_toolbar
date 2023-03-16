@@ -61,15 +61,18 @@ body{
     list-style: none;
     display:flex;
     flex-direction: $containerDirection;
-    width:fit-content;
     z-index:999999;
     gap:3px;
     align-items:$alignItems;
     justify-content:$justifyContent;
     transform: translate($toggleTranslation, 0px);
-    transition: .5s;
-
-
+    transition: transform .5s;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    li{
+      display: none;
+    }
   }
   .toggleButton
   {
@@ -92,6 +95,12 @@ body{
   .show
   {
     transform: translate(0px, 0px);
+    width:fit-content;
+    height: auto;
+    opacity: 1;
+    li{
+      display: block;
+    }
   }
 }
 
@@ -121,7 +130,10 @@ body{
     .itemContainer
     {
       transform: $animationM;
-      transition: .5s;
+      transition: transform .5s;
+      width: 0;
+      height: 0;
+      opacity: 0;
     }
     .item:not(.toggleButton.item)
     {
@@ -155,6 +167,9 @@ body{
     .show
     {
       transform: translate(0px, 0px);
+      width: auto;
+      height: auto;
+      opacity: 1;
     }
   }
   #desktopContainer
