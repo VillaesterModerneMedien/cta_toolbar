@@ -2,12 +2,12 @@
     <extension type="module" client="site" method="upgrade">
         <name>CTA Toolbar</name>
         <author>Mario Hewera</author>
-        <creationDate>September 2022</creationDate>
+        <creationDate>Maerz 2023</creationDate>
         <copyright>(C) 2022 Mario Hewera</copyright>
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
         <authorEmail>mh@villaester.de</authorEmail>
         <authorUrl>www.villaester.de</authorUrl>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
         <description>Call to action Toolbar</description>
         <namespace path="src">Joomla\Module\CTAToolbar</namespace>
         <files>
