@@ -1,10 +1,12 @@
 <?php
 /**
- * @package      Autohausen MIAHub Joomla 4 PKG
+ * SCSSPHP
  *
- * @author       Christian Schuelling <info@autohausen.de>
- * @copyright    2023 autohausen.de - All rights reserved.
- * @license      GNU General Public License version 3 or later
+ * @copyright 2015-2020 Leaf Corcoran
+ *
+ * @license http://opensource.org/licenses/MIT MIT
+ *
+ * @link http://scssphp.github.io/scssphp
  */
 
 

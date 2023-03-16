@@ -1,11 +1,4 @@
 <?php
-/**
- * @package      Autohausen MIAHub Joomla 4 PKG
- *
- * @author       Christian Schuelling <info@autohausen.de>
- * @copyright    2023 autohausen.de - All rights reserved.
- * @license      GNU General Public License version 3 or later
- */
 
 if (version_compare(PHP_VERSION, '5.6') < 0) {
     throw new \Exception('scssphp requires PHP 5.6 or above');
