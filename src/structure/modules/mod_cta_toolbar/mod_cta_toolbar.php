@@ -1,10 +1,10 @@
 <?php
 /**
- * @package      Autohausen MIAHub Joomla 4 PKG
+ * @package     Joomla.Site
+ * @subpackage  mod_feed
  *
- * @author       Christian Schuelling <info@autohausen.de>
- * @copyright    2023 autohausen.de - All rights reserved.
- * @license      GNU General Public License version 3 or later
+ * @copyright   (C) 2005 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
