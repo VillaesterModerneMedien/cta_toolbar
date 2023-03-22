@@ -35,3 +35,4 @@ class AtRootBlock extends Block
         $this->type = Type::T_AT_ROOT;
     }
 }
+
