@@ -20,6 +20,7 @@ use ScssPhp\ScssPhp\Compiler as ScssCompiler;
  *
  * @since  1.0
  */
+
 class CTAHelper
 {
 	/**
