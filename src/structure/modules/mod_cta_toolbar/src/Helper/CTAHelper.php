@@ -9,6 +9,10 @@
 
 namespace Joomla\Module\CTAToolbar\Site\Helper;
 
+use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Uri\Uri;
+use ScssPhp\ScssPhp\Compiler as ScssCompiler;
+
 \defined('_JEXEC') or die;
 
 /**
@@ -259,9 +263,13 @@ class CTAHelper
 
 
 		/*****************Compiler*********************/
-		require_once 'scss.inc.php';
-
-		$compiler = new Compiler();
+		
+		$base = Uri::base();
+		$path = $base . 'modules/mod_cta_toolbar/src/Helper/';
+		//include('scss.inc.php');
+		require_once $_SERVER['DOCUMENT_ROOT'] . '/modules/mod_cta_toolbar/src/Helper/scss.inc.php';
+		
+		$compiler = new ScssCompiler();
 
 		$arrContextOptions=array(       //Einstellungen für das Schreiben bei SSL-Zertifikat
 			"ssl"=>array(
