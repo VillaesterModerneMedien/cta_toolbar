@@ -66,8 +66,8 @@ class CTAHelper
 
 		$addCss = '';       //leerer CSS-Style wird angelegt
 		$counter = 0;       //Itemcounter für eindeutige Zuweisung
-		$direction = 'row'; //Defaul-Reihenfolge Icon / Text
-		$containerDirection= 'column';
+		$direction = 'row'; //Default-Reihenfolge Icon / Text
+		$containerDirection = 'column';
 		$translateX = '0px';
 		$translateY = '0px';
 		$translateXm = '0px';
