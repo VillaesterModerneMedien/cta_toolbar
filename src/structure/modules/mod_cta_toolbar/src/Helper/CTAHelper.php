@@ -271,11 +271,14 @@ class CTAHelper
 		require_once $_SERVER['DOCUMENT_ROOT'] . '/modules/mod_cta_toolbar/src/Helper/scss.inc.php';
 		
 		$compiler = new ScssCompiler();
-
+		$htAuth = $params['htUser'] . ':' . $params['htPass'];
 		$arrContextOptions=array(       //Einstellungen für das Schreiben bei SSL-Zertifikat
 			"ssl"=>array(
 				"verify_peer"=>false,
 				"verify_peer_name"=>false,
+			),
+			'http' => array (
+				'header' => 'Authorization: Basic ' . base64_encode($htAuth)
 			),
 		);
 

@@ -132,8 +132,7 @@
                         </form>
                     </field>
                 </fieldset>
-
-                    <fieldset name="Einstellungen" label="Einstellungen">
+                <fieldset name="Einstellungen" label="Einstellungen">
                         <fieldset name="compiling" label="CSS Compiling">
                             <field name="compile"
                                    type="checkbox"
@@ -315,6 +314,20 @@
                         </fieldset>
                     </fieldset>
                 <fieldset name="advanced">
+                    <fieldset name="security" label="Security / Development">
+                        <field name="Hinweis Htaccess Passwort"
+                               type="note"
+                               class="alert alert-info"
+                               label="Wichtig"
+                               description="Wenn die Seite Passwortgeschützt ist, muss hier der Username und das Passwort wie in der .htaccess Datei angegeben eingetragen werden."
+                        />
+                        <field name="htUser"
+                               label="Username"
+                        />
+                        <field name="htPass"
+                               label="Passwort"
+                        />
+                    </fieldset>
                     <field
                             name="layout"
                             type="modulelayout"
