@@ -328,6 +328,7 @@
                                label="Passwort"
                         />
                     </fieldset>
+
                     <field
                             name="layout"
                             type="modulelayout"
