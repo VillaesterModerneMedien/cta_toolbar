@@ -68,7 +68,6 @@ class CTAHelper
 		$items = $params->get('subitems', '');
 
 		/*** Defaultwerte für Variablen ***/
-
 		$addCss = '';       //leerer CSS-Style wird angelegt
 		$counter = 0;       //Itemcounter für eindeutige Zuweisung
 		$direction = 'row'; //Default-Reihenfolge Icon / Text
@@ -91,7 +90,6 @@ class CTAHelper
 		$animateM = '0px';
 
 		/*** Items ***/
-
 		foreach($items as $item)
 		{
 			$counter++;
@@ -102,7 +100,6 @@ class CTAHelper
 			$borderHoverColor = !($item->borderHoverColor) ? $parameters['globalBorderHoverColor'] : $item->borderHoverColor;
 			$backgroundHoverColor = !($item->textHoverBackgroundColor) ? $parameters['globalTextHoverBackgroundColor'] : $item->textHoverBackgroundColor;
 			$textHoverColor = !($item->textHoverColor) ? $parameters['globalTextHoverColor'] : $item->textHoverColor;
-
 			$addCss .= '.item-' . $counter . ' {';
 			$addCss .= 'color:' . $textColor . ';';
 			$addCss .= 'background-color:' . $backgroundColor . '; ';
@@ -118,7 +115,6 @@ class CTAHelper
 			$addCss .= 'color:' . $textHoverColor . ';';
 			$addCss .= 'background-color:' . $backgroundHoverColor . '; ';
 			$addCss .= '}';
-
 		}
 
 		/*** Positionierung Itemcontainer und davon abhängiges Styling***/
@@ -163,22 +159,18 @@ class CTAHelper
 			$addCss .= '.item a{margin-top:0;margin-bottom:0;}';
 			$addCss .= '.itemToggle{margin-top:0;margin-bottom:0;}';
 		}
-
 		$addCss .= '#desktopContainer{';
 		$addCss .= $horizontalPosition;
 		$addCss .= $verticalPosition;
 		$addCss .= '}';
-
 		$addCss .= '.item:not(.item.itemContent){';
 		$addCss .= 'padding' . $itemPadding . ': calc(8px + ' . $parameters['borderRadius'] . ');';
 		$addCss .= '}';
-
 		$addCss .= '.itemToggle{';
 		$addCss .= 'padding' . $togglePadding . ': 8px;';
 		$addCss .= '}';
 
 		/***MiddlePosition***/
-
 		$addCss .='.itemTab:hover .item.itemToggle{';
 		$addCss .='     border' . $togglePadding . '-left-radius:0;';
 		$addCss .='     border' . $togglePadding . '-right-radius:0;';
@@ -191,16 +183,13 @@ class CTAHelper
 		$addCss .='border' . $itemPadding . '-right-radius: 0;';
 		$addCss .='}';
 
-
 		/***MobilePosition***/
-
 		if($parameters['enableMobile'] === 'true')
 		{
 			$breakpoint = $parameters['breakpoint'];
 			$verticalPositionM = 'bottom: 0';
 			$translateYm = '-10px';
 			$animateM = 'calc(100% + ' . $parameters['iconSize'] . ' + 1.25em + 8px + 10px)' ;
-
 			switch($parameters['toolbarPositionMobile'])
 			{
 				case 'left':
@@ -217,15 +206,12 @@ class CTAHelper
 					$horizontalPositionM = 'right: 0;';
 					$translateXm = '-10px';
 					$addCss .='#mobileContainer{align-items:end}';
-
 					break;
 			}
-
 			$addCss .='.toggleButton{';
 			$addCss .='width: calc(' . $parameters['iconSize'] . ' + 15px);';
 			$addCss .='height: calc(' . $parameters['iconSize'] . ' + 15px);';
 			$addCss .='}';
-
 			$addCss .= '#mobileContainer{';
 			$addCss .= $horizontalPositionM;
 			$addCss .= $verticalPositionM;
@@ -237,7 +223,6 @@ class CTAHelper
 		}
 
 		/***SCSS Variabeln***/
-
 		$variables = [
 			'$direction'                        => $direction,
 			'$iconSize'                         => $parameters['iconSize'],
@@ -261,42 +246,31 @@ class CTAHelper
 			'$toggleFlex'                       => $toggleFlex,
 		];
 
-
-
 		/*****************Compiler*********************/
-		
 		$base = Uri::base();
 		$path = $base . 'modules/mod_cta_toolbar/src/Helper/';
-		//include('scss.inc.php');
 		require_once $_SERVER['DOCUMENT_ROOT'] . '/modules/mod_cta_toolbar/src/Helper/scss.inc.php';
-		
 		$compiler = new ScssCompiler();
-		$htAuth = $params['htUser'] . ':' . $params['htPass'];
+
 		$arrContextOptions=array(       //Einstellungen für das Schreiben bei SSL-Zertifikat
 			"ssl"=>array(
 				"verify_peer"=>false,
 				"verify_peer_name"=>false,
 			),
-			'http' => array (
-				'header' => 'Authorization: Basic ' . base64_encode($htAuth)
-			),
 		);
 
+		if(!empty($params['htUser']) && !empty($params['htPass']))
+		{
+			$htAuth = $params['htUser'] . ':' . $params['htPass'];
+			$arrContextOptions['http']['header'] = 'Authorization: Basic ' . base64_encode($htAuth);
+		}
 		$source_scss = Uri::base() . 'modules/mod_cta_toolbar/assets/css/custom.scss';
-
 		$scssContents = file_get_contents($source_scss, false , stream_context_create($arrContextOptions));
-
 		$import_path = 'scss';
 		$compiler->addImportPath($import_path);
-
 		$compiler->addVariables($variables);
-
 		$scssContents .= $addCss;
-
 		$css = $compiler->compileString($scssContents);
-
 		File::write('modules/mod_cta_toolbar/assets/css/toolbar.css', $css->getCss(), '' );
-
     }
-
 }

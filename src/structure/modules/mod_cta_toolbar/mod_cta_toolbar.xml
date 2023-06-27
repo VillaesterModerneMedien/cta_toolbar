@@ -2,12 +2,12 @@
     <extension type="module" client="site" method="upgrade">
         <name>CTA Toolbar</name>
         <author>Mario Hewera</author>
-        <creationDate>Maerz 2023</creationDate>
+        <creationDate>Juni 2023</creationDate>
         <copyright>(C) 2022 Mario Hewera</copyright>
         <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
         <authorEmail>mh@villaester.de</authorEmail>
         <authorUrl>www.villaester.de</authorUrl>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
         <description>Call to action Toolbar</description>
         <namespace path="src">Joomla\Module\CTAToolbar</namespace>
         <files>
@@ -19,12 +19,6 @@
             <folder>tmpl</folder>
             <folder>assets</folder>
         </files>
-  <!--      <languages>
-            <language tag="en-GB">language/en-GB/mod_feed.ini</language>
-            <language tag="en-GB">language/en-GB/mod_feed.sys.ini</language>
-        </languages>
-        <help key="Site_Modules:_Feed_Display" />
-        -->
         <config>
             <fields name="params">
                 <fieldset name="icons" label="Icons" class="ctaIconsContainer"
@@ -328,42 +322,43 @@
                                label="Passwort"
                         />
                     </fieldset>
+                    <fieldset name="erweitert" label="Layout">
+                        <field
+                                name="layout"
+                                type="modulelayout"
+                                label="JFIELD_ALT_LAYOUT_LABEL"
+                                class="form-select"
+                                validate="moduleLayout"
+                        />
 
-                    <field
-                            name="layout"
-                            type="modulelayout"
-                            label="JFIELD_ALT_LAYOUT_LABEL"
-                            class="form-select"
-                            validate="moduleLayout"
-                    />
+                        <field
+                                name="moduleclass_sfx"
+                                type="textarea"
+                                label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                                rows="3"
+                                validate="CssIdentifier"
+                        />
 
-                    <field
-                            name="moduleclass_sfx"
-                            type="textarea"
-                            label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-                            rows="3"
-                            validate="CssIdentifier"
-                    />
+                        <field
+                                name="cache"
+                                type="list"
+                                label="COM_MODULES_FIELD_CACHING_LABEL"
+                                default="1"
+                                filter="integer"
+                                validate="options"
+                        >
+                            <option value="1">JGLOBAL_USE_GLOBAL</option>
+                            <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                        </field>
+                        <field
+                                name="cache_time"
+                                type="number"
+                                label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                                default="900"
+                                filter="integer"
+                        />
+                    </fieldset>
 
-                    <field
-                            name="cache"
-                            type="list"
-                            label="COM_MODULES_FIELD_CACHING_LABEL"
-                            default="1"
-                            filter="integer"
-                            validate="options"
-                    >
-                        <option value="1">JGLOBAL_USE_GLOBAL</option>
-                        <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-                    </field>
-
-                    <field
-                            name="cache_time"
-                            type="number"
-                            label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-                            default="900"
-                            filter="integer"
-                    />
                 </fieldset>
             </fields>
         </config>
